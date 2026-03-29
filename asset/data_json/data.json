@@ -1,18 +1,46 @@
 [
     {
         "id":1,
+        "name":"benjamin_netanyahu",
         "assets":[
             {
+                "id":1,
+                "name":"video 1",
                 "type":"video",
-                "path":"asset/components/footer/footer.html"
+                "path":"benjamin_netanyahu/video/benjamin_netanyahu.mp4"
             },
             {
-                "type":"js",
-                "path":"asset/js/theme.js"
+                "id":2,
+                "name":"document 1",
+                "type":"documents",
+                "path":"benjamin_netanyahu/documents/12.pdf"
+            }
+        ],
+        "links":[
+            {
+                "id":1,
+                "name":"chatgpt analize 1",
+                "link":"https://twitter.com/Netanyahu/status/1234567890"
             }
         ]
     },
     {
-        "id":2
+        "id":2,
+        "name":"another_person",
+        "assets":[
+            {
+                "id":3,
+                "name":"abc",
+                "type":"video",
+                "path":"another_person/video/another_person.mp4"
+            }
+        ],
+        "links":[
+            {
+                "id":2,
+                "name":"def",
+                "link":"https://example.com"
+            }
+        ]
     }
 ]
