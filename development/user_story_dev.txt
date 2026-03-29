@@ -7,16 +7,19 @@ standarisasi tailwind cdn bootstrap icon color hunt cht[biru soft #EEF1FF, dark 
 
 ===========dev job start
 ===========prioritas start
+saat didevelop 
+
 logika konsumsi api jika di route ke x data harus semuanya ditampilkan jika ada indikasi :id maka tampilkan id berdasarkan json data jika kuncinya beda maka tampilkan 404 
 fetcher data akan seperti ini jika tidak ada queryparameter maka tampilkan semuanya jika ada queryparameter maka carikan berdasarkan /:\w+
 ===========prioritas end
 ==========que 
 
-query parameter dan data getter like react "/shop/:id" and data should converted to objects
+
 fetch json musti distop agar menghemat resource server
 
 ==========que 
 =====done start
+query parameter dan data getter like react "/shop/:id" and data should converted to objects [v]
 data dibuat dinamis dan disimpan di json [v]
 buat kode file di json di pointing ke data_klarifikasi berdasarkan type dan judul misal folder x [{assets:[
     {type:video,data:x/video/video.mp4},
