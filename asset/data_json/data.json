@@ -1,0 +1,18 @@
+[
+    {
+        "id":1,
+        "assets":[
+            {
+                "type":"video",
+                "path":"asset/components/footer/footer.html"
+            },
+            {
+                "type":"js",
+                "path":"asset/js/theme.js"
+            }
+        ]
+    },
+    {
+        "id":2
+    }
+]

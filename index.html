@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    
+  </head>
+  <body class="bg-[var(--soft)]">
+    <!-- nav start -->
+     <div class="nav"></div>
+    <!-- nav end -->
+    <!-- header start -->
+     <div class="header"></div>
+    <!-- header end -->
+     <!-- outlet start -->
+      <div class="outlet"></div>
+     <!-- outlet end -->
+     <!-- footer start -->
+     <div class="footer"></div>
+     <!-- footer end -->
+      <!-- script start -->
+    <script type="module">
+        import { themes } from "./asset/js/theme.js";
+        import { page_fetcher, component_fetcher, register_variable_styles, routes ,pointings_images_video_elements} from "./asset/js/util.js";
+
+        register_variable_styles({themes})
+        
+        component_fetcher({component: "header", target: ".header"});
+        component_fetcher({component: "footer", target: ".footer"});
+        component_fetcher({component: "nav", target: ".nav"});
+        const handle_routes={
+          "/#home": "home",
+          "/#about": "about",
+          "/#404": "not-found"
+        }
+        routes({routes: handle_routes});
+
+        // pointings_images_video_elements()
+    </script>
+      <!-- script end -->
+  </body>
+</html>
