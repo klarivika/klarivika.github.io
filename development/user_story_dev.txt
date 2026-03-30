@@ -1,3 +1,4 @@
+==============user story [user as web developer]
 user bisa menggunakkan komponent seperti navbar footer header seperti react ataupun vue component
 user bisa mengcostume warna lewat js dan menyimpan warna agar konsisten dan mudah untuk dirubah
 user bisa menggunakkan warna di theme yang mana sudah diconvert menjadi variable di inline style 
@@ -6,6 +7,8 @@ standarisasi tailwind cdn bootstrap icon color hunt cht[biru soft #EEF1FF, dark 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
 ===========dev job start
+gather some food and coffee 457iknovarnyavisionvarmatsi
+===========dev job end
 ===========prioritas start
 saat didevelop 
 
@@ -13,12 +16,14 @@ logika konsumsi api jika di route ke x data harus semuanya ditampilkan jika ada 
 fetcher data akan seperti ini jika tidak ada queryparameter maka tampilkan semuanya jika ada queryparameter maka carikan berdasarkan /:\w+
 ===========prioritas end
 ==========que 
-
-
+route pin dibuat jadi 2 yang 1 tampilkan semuanya yang 1 ditampilkan 1 data saja
 fetch json musti distop agar menghemat resource server
-
+buat fiture save pin post 
+buat reactive local storage untuk memicu fitur save pin post counter
 ==========que 
 =====done start
+saat direfresh maka url stuck dan html me render ulang element home [v]
+perbaikan pada queryparameter saat user akses dinamyc data seperti link/5 route:{link/:id} semulanya error namun sekarang sudah diperbaiki [v] 
 query parameter dan data getter like react "/shop/:id" and data should converted to objects [v]
 data dibuat dinamis dan disimpan di json [v]
 buat kode file di json di pointing ke data_klarifikasi berdasarkan type dan judul misal folder x [{assets:[
@@ -33,7 +38,8 @@ diklick about maka akan merender berulang ulang maka lakukan pencegahan pada pag
 =====done end
 
 ==========bug start
-saat direfresh maka url stuck dan html me render ulang element home 
+
+console megatakkan gambar tidak bisa ditangkap tapi waktu development gambar bisa tampil sempurna
 ==========bug end
 
 ==========not important develop later start 
@@ -55,3 +61,11 @@ pages akan di fetch dengan js dan semua asset yang ditangkap harus ./asset/img  
 https://www.w3schools.com/react/react_router.asp
 
 https://dev.to/moseeh_52/building-modern-spas-with-vanilla-javascript-a-beginners-guide-9a3
+
+============================peraturan dari klarivika
+1.jangan menggunakkan framework js apapun
+2.gunakkan vanila javascript untuk membangun sistem single page aplication
+3.developer wajib mendokumentasikan semua aktivitasnya dan dimasukkan ke dalam repository ini untuk keterbukaan informasi 
+4.boleh gunakkan library css seperti tailwind dan icon bebas ambil darimana saja 
+5.dokumentasikan apa project ini dan kenapa dibuat di readme.md 
+6.saat kartu dihover maka ada gambar yang digeser dan munculkan icon yang mengarahkan pengguna website ke arah card kontent agar fokus mereka tertuju pada topic berita 

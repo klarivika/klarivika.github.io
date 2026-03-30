@@ -38,13 +38,26 @@ const page_fetcher = async ({page,target}) => {
  * @desc fetches the components and returns the response insert it to dom
  * @param {string} url 
  * @param {string} target 
+ * @param {object} prop 
+ * @param {string} prop.icon 
  */
-const component_fetcher = async ({component,target}) => {
+const component_fetcher = async ({component,target,prop=null}) => {
     try {
         const simplyfing_data=`${component}/${component}.html`
         const response = await fetch("./asset/components/"+simplyfing_data);
-        const data = await response.text();
-        document.querySelector(target).innerHTML = data;
+        let data = await response.text();
+        if(prop){
+            // Replace placeholders in the fetched HTML with actual prop values
+            Object.entries(prop).forEach(([key, value]) => {
+                data = data.replace(new RegExp(`{{${key}}}`, 'g'), value)
+            });
+        }
+        if(typeof target === "function"){
+            // console.log("testing target function ",target())
+            target().innerHTML = data;
+            return
+        }
+        document.querySelector(target).innerHTML += data;
     }catch (error) {
         console.error("Error fetching component:", error);
     }
@@ -88,22 +101,29 @@ const custom_element_creator=({name,html})=>{
  * @desc store and render databased on url query param
  */
 const render_json_data=async()=>{
-    //home start
-        if(window.location.hash === "#home"){
-            const home_data=await fetcher_data()
-            console.log("home data ",home_data)
-             //tembak ke outlet
-            const home_outlet=document.querySelector(".outlet")
-            home_data.forEach((item)=>{
-                const div=document.createElement("div")
-                div.innerHTML=`
-                    <h2>${item.name}</h2>
-                    <p>${item.description}</p>
-                `
-                home_outlet.appendChild(div)
-            })
+    const route_data={
+        home:"#home"
+    }
+    const render_home_data=async()=>{
+        const home_data=await fetcher_data()
+        for (const item of home_data) {
+                 await component_fetcher({component: "card", target: ".card-container"});
+                 const cards=document.querySelectorAll(".card")
+                    for(const card of cards){
+                        await component_fetcher({component: "icon", target: ()=>card.querySelector(".save-icon"),prop:{icon:"heart text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer"}})
+                        await component_fetcher({component: "icon", target: ()=>card.querySelector(".permata-container"),prop:{icon:"gem text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer"}})
+                        await component_fetcher({component: "icon", target: ()=>card.querySelector(".text-status .icon-status"),prop:{icon:"gem text-2xl text-gray-500 transition-all duration-400"}})
+                        await component_fetcher({component: "icon", target: ()=>card.querySelector(".permata-container"),prop:{icon:"gem transition-all duration-700 absolute z-[-1] group-hover:z-[123] opacity-0 group-hover:opacity-100 group-hover:top-[5.25rem] top-[-1.10rem] right-[0] group-hover:right-[5.5rem] group-hover:rotate-[45deg]"}})
+                        await component_fetcher({component: "icon", target: ()=>card.querySelector(".icon-placeholder"),prop:{icon:"shield-fill-exclamation text-xl"}})
+                        await component_fetcher({component: "link", target: ()=>card.querySelector(".link-containers"),prop:{icon:"shield-fill-exclamation text-xl", link_to:"home", link_name:"View Article"}})
+                    }    
+            }
+    }
+    //route logic start
+        if(window.location.hash === route_data.home){
+            await render_home_data()
         }
-        //home end
+        //route logic end
 }
 
 let curent_hash="";
@@ -123,7 +143,7 @@ const routes=({routes})=>{
         //cocokan dengan routes jika tidak maka lempar ke page not found
         const routes_get_keys=Object.keys(routes)[Object.keys(routes).findIndex(key => key.startsWith("/"+window.location.hash.split("/")[0]))]//route saat ini
         let get_query_param_url_if_exist=window.location.hash
-        console.log("routes get keys ",routes_get_keys)
+        // console.log("routes get keys ",routes_get_keys)
         if(/\:\w+/g.test(routes_get_keys)){
             //routes get keys jadikan objects
             //merubah data params menjadi object dengan key nama param dan value dari url {id:1}
@@ -143,10 +163,10 @@ const routes=({routes})=>{
         // console.log("data params ",data_params)
         const url=routes['/'+get_query_param_url_if_exist] ?? routes['/#404']; 
         await page_fetcher({page:url, target:".outlet"});
+        //fetcher data di route tertentu saja untuk menghemat resource karena tidak semua page membutuhkan data yang sama
+            await render_json_data()
         // make dinamyc pointings
         pointings_images_video_elements()
-        //fetcher data di route tertentu saja untuk menghemat resource karena tidak semua page membutuhkan data yang sama
-       render_json_data()
     })
     window.addEventListener('load',async()=>{
         // Trigger the initial route based on the current hash
@@ -164,10 +184,10 @@ const routes=({routes})=>{
             // console.log("url ",url.split("/")[0])
         }
        await page_fetcher({page:initialUrl, target:".outlet"});
+            //initial render data 
+            await render_json_data()
         // make dinamyc pointings
         pointings_images_video_elements()
-        //initial render data 
-        render_json_data()
     })
 }
 
@@ -178,6 +198,7 @@ const routes=({routes})=>{
 const pointings_images_video_elements=()=>{
     const select=document.querySelectorAll('img[type="web"], video[type="web"], img[type="data_klarifikasi"], video[type="data_klarifikasi"]');
     select.forEach((element)=>{
+        // console.log("testing why fail ",element)
         const type=element.getAttribute('type');
         const src=element.getAttribute('src');
         if(type === "web"){

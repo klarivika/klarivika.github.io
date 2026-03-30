@@ -1,7 +1,9 @@
 [
     {
         "id":1,
-        "name":"benjamin_netanyahu",
+        "name":"benjamin netanyahu",
+        "status":"manipulated by media : cherry picking,wrong translation,misleading headline",
+        "is_manipulated":true,
         "assets":[
             {
                 "id":1,
@@ -26,7 +28,9 @@
     },
     {
         "id":2,
-        "name":"another_person",
+        "name":"sadam hussein",
+        "status":"original",
+        "is_manipulated":false,
         "assets":[
             {
                 "id":3,
