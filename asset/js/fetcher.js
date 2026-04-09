@@ -77,7 +77,7 @@ const page_fetcher = async ({page,target}) => {
             document.querySelector(target).innerHTML = page_cache[page];
             return 
         }
-        
+            console.log("pages ",page)
         const simplyfing_data=`${page}/${page}.html`
         const response = await fetch("./pages/"+simplyfing_data);
         const data = await response.text();

@@ -5,13 +5,33 @@ import { component_fetcher, fetcher_data } from "./fetcher.js";
 const render_json_data = async () => {
 	const route_data = {
 		home: "#home",
+		faq: "#faq",
+		about: "#about",
+		evi: "#evidence",
 	};
+const nav_comp=async()=>{
+	if((document.querySelector(".nav-container").children.length)>0){
+		return
+	}
+		const permited_url=[route_data.home, route_data.faq, route_data.about]
+	for(const [key, value] of Object.entries(route_data)){
+			const values=value.replace("#","")
+		if(!permited_url.includes(value)) continue
+		await component_fetcher({
+			component: "link",
+			target: ".nav-container",
+			prop:{link_to: values, link_name: key},
+		});
+	}
+}
+nav_comp()
+	// start render pages
 	const render_home_data = async () => {
 		const home_data = await fetcher_data();
 		for (const item of home_data) {
-            if(item.is_publish === false){
-                 continue    
-            }
+			if (item.is_publish === false) {
+				continue;
+			}
 			await component_fetcher({
 				component: "card",
 				target: ".card-container",
@@ -86,6 +106,7 @@ const render_json_data = async () => {
 			}
 		}
 	};
+	// end render pages
 	//route logic start
 	if (window.location.hash === route_data.home) {
 		await render_home_data();

@@ -34,7 +34,7 @@ const routes=({routes})=>{
             get_query_param_url_if_exist=routes_get_keys.substring(1)
             // console.log("data query param ",routes_get_keys) 
         }
-        // console.log("data data param "+get_query_param_url_if_exist)
+        console.log("data data param "+get_query_param_url_if_exist)
         // console.log("data params ",data_params)
         const url=routes['/'+get_query_param_url_if_exist] ?? routes['/#404']; 
         await page_fetcher({page:url, target:".outlet"});
