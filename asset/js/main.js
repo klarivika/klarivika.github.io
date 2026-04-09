@@ -1,0 +1,24 @@
+import {  register_variable_styles } from "./util.js";
+import { routes } from "./routes.js";
+import {component_fetcher} from "./fetcher.js";
+import { themes } from "./theme.js";
+
+const init_app=()=>{
+     register_variable_styles({themes})
+        
+        component_fetcher({component: "header", target: ".header"});
+        component_fetcher({component: "footer", target: ".footer"});
+        component_fetcher({component: "nav", target: ".nav"});
+        const handle_routes={
+          "/#home": "home",
+          "/#about": "about",
+          "/#evidence/:id": "evidence",
+          "/#404": "not-found",
+        }
+        routes({routes: handle_routes});
+}
+
+
+export{
+    init_app
+}

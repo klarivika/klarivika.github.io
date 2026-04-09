@@ -22,21 +22,10 @@
      <!-- footer end -->
       <!-- script start -->
     <script type="module">
-        import { themes } from "./asset/js/theme.js";
-        import { page_fetcher, component_fetcher, register_variable_styles, routes ,pointings_images_video_elements} from "./asset/js/util.js";
+        // import { themes } from "./asset/js/theme.js";
+        import {init_app} from "./asset/js/main.js";
 
-        register_variable_styles({themes})
-        
-        component_fetcher({component: "header", target: ".header"});
-        component_fetcher({component: "footer", target: ".footer"});
-        component_fetcher({component: "nav", target: ".nav"});
-        const handle_routes={
-          "/#home": "home",
-          "/#about": "about",
-          "/#evidence/:id": "evidence",
-          "/#404": "not-found",
-        }
-        routes({routes: handle_routes});
+       init_app()
     </script>
       <!-- script end -->
   </body>

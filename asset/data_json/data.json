@@ -2,8 +2,10 @@
     {
         "id":1,
         "name":"benjamin netanyahu",
+        "picture":"benjamin_netanyahu/image/benjamin_netanyahu.jpg",
         "status":"manipulated by media : cherry picking,wrong translation,misleading headline",
         "is_manipulated":true,
+        "is_publish":true,
         "assets":[
             {
                 "id":1,
@@ -29,19 +31,21 @@
     {
         "id":2,
         "name":"sadam hussein",
+        "picture":"sadam_hussein/image/sadam_hussein.jpg",
         "status":"original",
+        "is_publish":false,
         "is_manipulated":false,
         "assets":[
             {
-                "id":3,
+                "id":1,
                 "name":"abc",
                 "type":"video",
-                "path":"another_person/video/another_person.mp4"
+                "path":"sadam_hussein/video/sadam_hussein.mp4"
             }
         ],
         "links":[
             {
-                "id":2,
+                "id":1,
                 "name":"def",
                 "link":"https://example.com"
             }
