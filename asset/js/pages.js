@@ -4,7 +4,6 @@ import { component_fetcher, fetcher_data } from "./fetcher.js";
  * @param {object} datas
  */
 const render_json_data = async (datas) => {
-	console.log("MASUK render_json_data", datas);
 	const route_data = {
 		home: "#home",
 		faq: "#faq",

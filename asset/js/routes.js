@@ -20,57 +20,20 @@ const routes = ({ routes }) => {
 		//cocokan dengan routes jika tidak maka lempar ke page not found
 		const routes_get_keys =
 			Object.keys(routes)[
-				Object.keys(routes).findIndex(
-					(key) =>
-						key.startsWith(
-							"/" +
-								window.location.hash.split(
-									"/",
-								)[0],
-						),
-				)
-			]; //route saat ini
+				Object.keys(routes).findIndex((key) =>key.startsWith("/" +window.location.hash.split("/",)[0],),)]; //route saat ini
 		let get_query_param_url_if_exist = window.location.hash;
 		// console.log("routes get keys ",routes_get_keys)
 		if (/\:\w+/g.test(routes_get_keys)) {
 			//routes get keys jadikan objects
 			//merubah data params menjadi object dengan key nama param dan value dari url {id:1}
-			routes_get_keys
-				.match(/\:\w+/g)
-				?.map((param) => {
-					const array_routes =
-						routes_get_keys.split(
-							"/",
-						); //array route saat ini
-					const get_index_of_key_params =
-						array_routes[
-							array_routes.findIndex(
-								(
-									key,
-								) =>
-									key ===
-									param,
-							)
-						].substring(
-							1,
-						); //:id => id
-					const url =
-						"/" +
-						window
-							.location
-							.hash; //.split("/")
-					const value_param =
-						url.split(
-							"/",
-						)[
-							array_routes.indexOf(
-								":" +
-									get_index_of_key_params,
-							)
+			routes_get_keys.match(/\:\w+/g)?.map((param) => {
+					const array_routes =routes_get_keys.split("/"); //array route saat ini
+					const get_index_of_key_params =array_routes[array_routes.findIndex((key) =>key === param)].substring(1); //:id => id
+					const url ="/" +window.location.hash; //.split("/")
+					const value_param =url.split("/")[
+							array_routes.indexOf(":" +get_index_of_key_params)
 						];
-					data_params[
-						get_index_of_key_params
-					] = value_param;
+					data_params[get_index_of_key_params] = value_param;
 					// console.log("testing bang ",{value_param,url,data_params})
 					// console.log("urlnya ",url.split("/"))
 				});
@@ -84,10 +47,7 @@ const routes = ({ routes }) => {
 		);
 		// console.log("data params ",data_params)
 		const url =
-			routes[
-				"/" +
-					get_query_param_url_if_exist
-			] ?? routes["/#404"];
+			routes["/" +get_query_param_url_if_exist] ?? routes["/#404"];
 		await page_fetcher({ page: url, target: ".outlet" });
 		//fetcher data di route tertentu saja untuk menghemat resource karena tidak semua page membutuhkan data yang sama
 		await render_json_data(data_params);
@@ -98,7 +58,7 @@ const routes = ({ routes }) => {
 	// Si el documento ya está cargado, ejecutar inmediatamente
 	const handle_load = async () => {
 		// Trigger the initial route based on the current hash
-		console.log("load CHANGE TRIGGERED");
+		// console.log("load CHANGE TRIGGERED");
 		const url = window.location.hash;
 
 		// console.log("no bug baby ",url)
@@ -107,22 +67,7 @@ const routes = ({ routes }) => {
 		//kalaiu url tidak kosong maka load yang sudah ada di url
 		if (url !== "") {
 			const dataroute = Object.keys(routes);
-			initialUrl =
-				routes[
-					dataroute[
-						dataroute.findIndex(
-							(
-								key,
-							) =>
-								key.startsWith(
-									"/" +
-										url.split(
-											"/",
-										)[0],
-								),
-						)
-					]
-				];
+			initialUrl =routes[dataroute[dataroute.findIndex((key) =>key.startsWith("/" +url.split("/")[0]))]];
 			// console.log("dataroute ",)
 			// console.log("url ",url.split("/")[0])
 		}
