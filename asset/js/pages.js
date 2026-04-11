@@ -1,19 +1,20 @@
 import { component_fetcher, fetcher_data } from "./fetcher.js";
 /**
  * @desc store and render databased on url query param
+ * @param {object} datas
  */
-const render_json_data = async () => {
+const render_json_data = async (datas) => {
+	console.log("MASUK render_json_data", datas);
 	const route_data = {
 		home: "#home",
 		faq: "#faq",
-		about: "#about",
 		evi: "#evidence",
 	};
 const nav_comp=async()=>{
 	if((document.querySelector(".nav-container").children.length)>0){
 		return
 	}
-		const permited_url=[route_data.home, route_data.faq, route_data.about]
+		const permited_url=[route_data.home, route_data.faq]
 	for(const [key, value] of Object.entries(route_data)){
 			const values=value.replace("#","")
 		if(!permited_url.includes(value)) continue
@@ -25,9 +26,13 @@ const nav_comp=async()=>{
 	}
 }
 nav_comp()
+
+
+
 	// start render pages
 	const render_home_data = async () => {
-		const home_data = await fetcher_data();
+		const home_data = await fetcher_data(datas);
+		console.log("HOME DATA =>", home_data);
 		for (const item of home_data) {
 			if (item.is_publish === false) {
 				continue;
@@ -106,10 +111,32 @@ nav_comp()
 			}
 		}
 	};
+	const render_faq_data = async () => {
+		// Implementation for rendering FAQ data
+		const faq_datas=[
+			{id:1,question:"What is Klarivika?", answer:"Klarivika is a platform that combat against misinformation and disinformation by providing users with accurate and reliable information. It serves as a resource for individuals seeking to verify the authenticity of news and information they encounter online."},
+		]
+		faq_datas.forEach(async(data)=>{
+			await component_fetcher({
+				component: "accordion",
+				target: ".faq-container",
+				prop:{...data},
+			});
+			await component_fetcher({
+				component: "icon",
+				target: ()=>document.querySelector(`.faq-container .icon-container`),
+				prop:{icon:" bi-chevron-down text-lg transition-all duration-300 group-data-[open=true]:rotate-180"},
+			})
+		})
+	};
+
 	// end render pages
 	//route logic start
 	if (window.location.hash === route_data.home) {
 		await render_home_data();
+	}
+	if (window.location.hash === route_data.faq) {
+		await render_faq_data();
 	}
 	//route logic end
 };

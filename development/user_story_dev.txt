@@ -69,3 +69,36 @@ https://dev.to/moseeh_52/building-modern-spas-with-vanilla-javascript-a-beginner
 4.boleh gunakkan library css seperti tailwind dan icon bebas ambil darimana saja 
 5.dokumentasikan apa project ini dan kenapa dibuat di readme.md 
 6.saat kartu dihover maka ada gambar yang digeser dan munculkan icon yang mengarahkan pengguna website ke arah card kontent agar fokus mereka tertuju pada topic berita 
+======================bugs 
+bug di nav akali pakai manual ajah biar gak nge bug
+
+
+==========
+di page fetcher dipassing param untuk memudahkan user ya mirip seperti react js namun kendalanya adalah bagaimana cara mengambil nilai param kalau cara kerja aplikasi ini hanya fetch html file lalu render ke outlet 
+atau di render page ambil 
+=untuk sementara simpan di simpan via localstorage
+==routes.js
+
+
+diakali pakai callback untuk mengambil data param di routes.js lalu lengketkan di pages
+
+
+const handle_routes={
+          "/#home": "home",
+          "/#faq": "faq",
+          "/#evidence/:id": "evidence",
+          "/#404": "not-found",
+        }
+
+        di pages.js param di passing biar simple ajah
+
+
+        fetcher data di fetcher.js dia punya parameter
+
+              fetcher
+        fetcher_data
+            routes
+        render_json_data
+
+
+        try catch error silent
