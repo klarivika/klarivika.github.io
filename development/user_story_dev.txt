@@ -8,6 +8,7 @@ standarisasi tailwind cdn bootstrap icon color hunt cht[biru soft #EEF1FF, dark 
 
 ===========dev job start
 gather some food and coffee 457iknovarnyavisionvarmatsi
+logika fetch param sangat sulit karena kode saling tergantung satu sama lain ? buat kode yang sama persis
 ===========dev job end
 ===========prioritas start
 saat didevelop 

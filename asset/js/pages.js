@@ -31,9 +31,9 @@ nav_comp()
 	// start render pages
 	const render_home_data = async () => {
 		const home_data = await fetcher_data(datas);
-		console.log("HOME DATA =>", home_data);
+		// console.log("HOME DATA =>", home_data);
 		for (const item of home_data) {
-			if (item.is_publish === false) {
+			if (item?.is_publish === false) {
 				continue;
 			}
 			await component_fetcher({
@@ -102,7 +102,7 @@ nav_comp()
 							".link-containers",
 						),
 					prop: {
-						icon: "shield-fill-exclamation text-xl",
+						icon: "shield-fill-exclamation text-xl pb-3 border-b-3 border-white",
 						link_to: "home",
 						link_name: "View Article",
 					},
