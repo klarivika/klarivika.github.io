@@ -45,6 +45,9 @@ nav_comp()
 					".card",
 				);
 			for (const card of cards) {
+				card.querySelector(".jabatan").textContent=item.jabatan
+				card.querySelector(".name").textContent=item.name
+				card.querySelector(".status").textContent=item.status
 				await component_fetcher({
 					component: "icon",
 					target: () =>
@@ -103,10 +106,28 @@ nav_comp()
 						),
 					prop: {
 						icon: "shield-fill-exclamation text-xl pb-3 border-b-3 border-white",
-						link_to: "home",
+						link_to: `home/${item.id}`,
 						link_name: "View Article",
 					},
 				});
+				const evidence=`evidence/${item.id}`
+				await component_fetcher({
+					component: "link",
+					target: () =>
+						card.querySelector(
+							".link-containers2",
+						),
+					prop: {
+						icon: "shield-fill-exclamation text-xl pb-3 border-b-3 border-white text-white block",
+						link_to: `${evidence}`,
+						link_name: "View Article",
+					},
+				})
+				card.querySelector(".link-containers2").addEventListener("click",()=>{
+					// alert("nice")
+					window.location.hash=`${evidence}`
+				})
+				
 			}
 		}
 	};
