@@ -8,8 +8,8 @@ const query_param_fetcher=({routes,datas,get_data=null})=>{
 	//? cari tahu apakah bisa \:\w+
 	const dataroutes=routes
 	const url=datas.url
-	const url2=url.split("/")[0]
-	const url3=url.split("/")
+	const url2=url?.split("/")[0]
+	const url3=url?.split("/")
 	//ambil routes saat ini
 	const get_routes_datas=Object.keys(dataroutes) 
 	const get_routes_now=get_routes_datas[get_routes_datas.findIndex(key=>key.startsWith("/"+url2))].slice(1) // evidence/:id
@@ -71,6 +71,7 @@ const routes = ({ routes }) => {
 		// console.log("data params ",data_params)
 		const url =routes["/" +get_query_param_url_if_exist] ?? routes["/#404"];
 		//kene ki
+		console.log("washi no url ",url)
 		await page_fetcher({ page: url, target: ".outlet" });
 		//fetcher data di route tertentu saja untuk menghemat resource karena tidak semua page membutuhkan data yang sama
 		//in there are alot of page that need data from routes in function below
