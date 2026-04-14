@@ -1,18 +1,55 @@
 [
     {
         "id":1,
+        "name":"benjamin netanyahu",
+        "picture":"benjamin_netanyahu/image/benjamin_netanyahu.jpg",
+        "jabatan":"prime minister",
+        "status":"manipulated by media : cherry picking,wrong translation,misleading headline",
+        "is_manipulated":true,
+        "is_publish":true,
         "assets":[
             {
+                "id":1,
+                "name":"video 1",
                 "type":"video",
-                "path":"asset/components/footer/footer.html"
+                "path":"benjamin_netanyahu/video/benjamin_netanyahu.mp4"
             },
             {
-                "type":"js",
-                "path":"asset/js/theme.js"
+                "id":2,
+                "name":"document 1",
+                "type":"documents",
+                "path":"benjamin_netanyahu/documents/12.pdf"
+            }
+        ],
+        "links":[
+            {
+                "id":1,
+                "name":"chatgpt analize 1",
+                "link":"https://twitter.com/Netanyahu/status/1234567890"
             }
         ]
     },
     {
-        "id":2
+        "id":2,
+        "name":"sadam hussein",
+        "picture":"sadam_hussein/image/sadam_hussein.jpg",
+        "status":"original",
+        "is_publish":false,
+        "is_manipulated":false,
+        "assets":[
+            {
+                "id":1,
+                "name":"abc",
+                "type":"video",
+                "path":"sadam_hussein/video/sadam_hussein.mp4"
+            }
+        ],
+        "links":[
+            {
+                "id":1,
+                "name":"def",
+                "link":"https://example.com"
+            }
+        ]
     }
 ]

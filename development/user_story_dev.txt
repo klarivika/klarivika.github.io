@@ -1,3 +1,4 @@
+==============user story [user as web developer]
 user bisa menggunakkan komponent seperti navbar footer header seperti react ataupun vue component
 user bisa mengcostume warna lewat js dan menyimpan warna agar konsisten dan mudah untuk dirubah
 user bisa menggunakkan warna di theme yang mana sudah diconvert menjadi variable di inline style 
@@ -5,21 +6,50 @@ standarisasi tailwind cdn bootstrap icon color hunt cht[biru soft #EEF1FF, dark 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-===========dev job
-buat fungsi untuk render component v
-jadikan website ini spa seperti react dan vue sederhana saja v
+===========dev job start
+gather some food and coffee 457iknovarnyavisionvarmatsi
+logika fetch param sangat sulit karena kode saling tergantung satu sama lain ? buat kode yang sama persis
+===========dev job end
+===========prioritas start
+saat didevelop 
 
-data dibuat dinamis dan disimpan di json
-buat asset dipointing ke asset sehingga bisa diakses misal <img src="img/what.png"/> semua format video img tanpa melibatkan costume element tambahkan type atribute web[pointing ke asset] atau data_klarifikasi[pointing kesana] jika tidak ada maka harus dilakukan manual oleh webdev
-
-buat costume element link untuk handle spa nanti saja 
+logika konsumsi api jika di route ke x data harus semuanya ditampilkan jika ada indikasi :id maka tampilkan id berdasarkan json data jika kuncinya beda maka tampilkan 404 
+fetcher data akan seperti ini jika tidak ada queryparameter maka tampilkan semuanya jika ada queryparameter maka carikan berdasarkan /:\w+
+===========prioritas end
+==========que 
+route pin dibuat jadi 2 yang 1 tampilkan semuanya yang 1 ditampilkan 1 data saja
+fetch json musti distop agar menghemat resource server
+buat fiture save pin post 
+buat reactive local storage untuk memicu fitur save pin post counter
+==========que 
+=====done start
+saat direfresh maka url stuck dan html me render ulang element home [v]
+perbaikan pada queryparameter saat user akses dinamyc data seperti link/5 route:{link/:id} semulanya error namun sekarang sudah diperbaiki [v] 
+query parameter dan data getter like react "/shop/:id" and data should converted to objects [v]
+data dibuat dinamis dan disimpan di json [v]
 buat kode file di json di pointing ke data_klarifikasi berdasarkan type dan judul misal folder x [{assets:[
     {type:video,data:x/video/video.mp4},
     {type:image,data:x/imgs/xpatriot.jpg},
 ]}]
-lalu data akan dimanipulasi dengan js di pointing ke ./asset/data_klarifikasi pada saat akan disuntikkan ke html
-==========bug 
-diklick about maka akan merender berulang ulang maka lakukan pencegahan pada pages jika lokasi saat ini adalah misal about nanti aja
+lalu data akan dimanipulasi dengan js di pointing ke ./asset/data_klarifikasi pada saat akan disuntikkan ke html [v]
+buat fungsi untuk render component [v]
+jadikan website ini spa seperti react dan vue sederhana saja [v]
+buat asset dipointing ke asset sehingga bisa diakses misal <img src="img/what.png"/> semua format video img tanpa melibatkan costume element tambahkan type atribute web[pointing ke asset] atau data_klarifikasi[pointing kesana] jika tidak ada maka harus dilakukan manual oleh webdev [v]
+diklick about maka akan merender berulang ulang maka lakukan pencegahan pada pages jika lokasi saat ini adalah misal about nanti aja [v]
+=====done end
+
+==========bug start
+saat pindah ke halaman lalu user back ke halaman sebelumnya maka muncul error 
+
+console megatakkan gambar tidak bisa ditangkap tapi waktu development gambar bisa tampil sempurna
+==========bug end
+
+==========not important develop later start 
+buat costume element link untuk handle spa nanti saja 
+==========not important develop later end
+
+===========dev job end
+
 ============peraturan development web header
 
 panggil komponent yang digunakkan berulang contohnya 
@@ -33,3 +63,44 @@ pages akan di fetch dengan js dan semua asset yang ditangkap harus ./asset/img  
 https://www.w3schools.com/react/react_router.asp
 
 https://dev.to/moseeh_52/building-modern-spas-with-vanilla-javascript-a-beginners-guide-9a3
+
+============================peraturan dari klarivika
+1.jangan menggunakkan framework js apapun
+2.gunakkan vanila javascript untuk membangun sistem single page aplication
+3.developer wajib mendokumentasikan semua aktivitasnya dan dimasukkan ke dalam repository ini untuk keterbukaan informasi 
+4.boleh gunakkan library css seperti tailwind dan icon bebas ambil darimana saja 
+5.dokumentasikan apa project ini dan kenapa dibuat di readme.md 
+6.saat kartu dihover maka ada gambar yang digeser dan munculkan icon yang mengarahkan pengguna website ke arah card kontent agar fokus mereka tertuju pada topic berita 
+======================bugs 
+bug di nav akali pakai manual ajah biar gak nge bug
+
+
+==========
+di page fetcher dipassing param untuk memudahkan user ya mirip seperti react js namun kendalanya adalah bagaimana cara mengambil nilai param kalau cara kerja aplikasi ini hanya fetch html file lalu render ke outlet 
+atau di render page ambil 
+=untuk sementara simpan di simpan via localstorage
+==routes.js
+
+
+diakali pakai callback untuk mengambil data param di routes.js lalu lengketkan di pages
+
+
+const handle_routes={
+          "/#home": "home",
+          "/#faq": "faq",
+          "/#evidence/:id": "evidence",
+          "/#404": "not-found",
+        }
+
+        di pages.js param di passing biar simple ajah
+
+
+        fetcher data di fetcher.js dia punya parameter
+
+              fetcher
+        fetcher_data
+            routes
+        render_json_data
+
+
+        try catch error silent
