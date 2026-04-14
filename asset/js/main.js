@@ -12,10 +12,26 @@ const init_app=async()=>{
         await component_fetcher({component: "footer", target: ".footer",prop:{year: new Date().getFullYear()}});
         await component_fetcher({component: "nav", target: ".nav"});
         const handle_routes={
-          "/#home": "home",
-          "/#faq": "faq",
-          "/#evidence/:id": "evidence",
-          "/#404": "not-found",
+          "/#home": {
+            page:"home",
+            title:" home",
+            description:""
+          },
+          "/#faq": {
+            page:"faq",
+            title:" frequently asked questions",
+            description:""
+          },
+          "/#evidence/:id": {
+            page:"evidence",
+            title:" evidence",
+            description:""
+          },
+          "/#404": {
+            page:"not-found",
+            title:"page not found 404",
+            description:"",
+          },
         }
         routes({routes: handle_routes});
 }

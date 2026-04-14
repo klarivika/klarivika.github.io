@@ -39,6 +39,7 @@ diklick about maka akan merender berulang ulang maka lakukan pencegahan pada pag
 =====done end
 
 ==========bug start
+saat pindah ke halaman lalu user back ke halaman sebelumnya maka muncul error 
 
 console megatakkan gambar tidak bisa ditangkap tapi waktu development gambar bisa tampil sempurna
 ==========bug end

@@ -2,7 +2,15 @@ import { page_fetcher } from "./fetcher.js";
 import { render_json_data } from "./pages.js";
 import { pointings_images_video_elements } from "./pointing.js";
 let curent_hash = "";
-
+const url_load_metadata=(urldata)=>{
+	const meta_title=document.querySelector("title")
+	const attr_name="meta-data"
+	if(!meta_title.hasAttribute(attr_name)){
+		meta_title.setAttribute(attr_name,document.title)
+	}
+	const template=meta_title.getAttribute(attr_name)
+	document.title=template.replace(/{{\w+}}/g,`${urldata.title}`)
+}
 
 const query_param_fetcher=({routes,datas,get_data=null})=>{
 	//? cari tahu apakah bisa \:\w+
@@ -46,6 +54,7 @@ const routes = ({ routes }) => {
 		const routes_get_keys =Object.keys(routes)[
 				Object.keys(routes).findIndex((key) =>key.startsWith("/" +window.location.hash.split("/",)[0],),)]; //route saat ini /#home
 				// console.log("route get key ",routes_get_keys) // /#home
+				// console.log("route get key ",routes_get_keys) // /#home
 		let get_query_param_url_if_exist = window.location.hash;
 		// console.log("routes get keys ",routes_get_keys)
 		if (/\:\w+/g.test(routes_get_keys)) {
@@ -70,8 +79,10 @@ const routes = ({ routes }) => {
 		
 		// console.log("data params ",data_params)
 		const url =routes["/" +get_query_param_url_if_exist] ?? routes["/#404"];
+		console.log("url last ",url)
 		//kene ki
 		console.log("washi no url ",url)
+		url_load_metadata(url)
 		await page_fetcher({ page: url, target: ".outlet" });
 		//fetcher data di route tertentu saja untuk menghemat resource karena tidak semua page membutuhkan data yang sama
 		//in there are alot of page that need data from routes in function below
@@ -88,23 +99,26 @@ const routes = ({ routes }) => {
 
 		// console.log("no bug baby ",url)
 		//kalau url saat ini kosong berarti render halaman home atau pertama
-		let initialUrl = routes[Object.entries(routes)[0][0]];
+		// console.log("pages ")
+		let initialUrl = routes[Object.entries(routes)[0][0]].page;
 		//kalaiu url tidak kosong maka load yang sudah ada di url
 		if (url !== "") {
 			const dataroute = Object.keys(routes)
 			initialUrl =routes[dataroute[dataroute.findIndex((key) =>key.startsWith("/" +url.split("/")[0]))]]; //route saat ini misal evidence tanpa param :id
 			// console.log("dataroute ",initialUrl)
 			// console.log("url ",url.split("/")[0])
-			query_param_fetcher({routes,datas: {url},get_data:({key,value,url})=>{
+			query_param_fetcher({routes:routes,datas: {url},get_data:({key,value,url})=>{
 				console.log("ricek ",{key,value,url})
 				data_params[key]=value
 			}})
 		}
-		query_param_fetcher({routes,datas: {url},get_data:({key,value})=>{
+		query_param_fetcher({routes:routes,datas: {url},get_data:({key,value})=>{
 			// console.log({key,value})
 			data_params[key]=value
 		}})
+
 		// query_param_fetcher(url)
+		url_load_metadata(initialUrl)
 		await page_fetcher({
 			page: initialUrl,
 			target: ".outlet",

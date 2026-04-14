@@ -88,16 +88,16 @@ const component_fetcher = async ({component,target,prop=null}) => {
 const page_cache = {};
 const page_fetcher = async ({page,target}) => {
     try {
-        if(page_cache[page]){
-            document.querySelector(target).innerHTML = page_cache[page];
+        if(page_cache[page.page]){
+            document.querySelector(target).innerHTML = page_cache[page.page];
             return 
         }
-            // console.log("param ",param)
-        const simplyfing_data=`${page}/${page}.html`
+            console.log("param page ",page)
+        const simplyfing_data=`${page['page']}/${page['page']}.html`
         const response = await fetch("./pages/"+simplyfing_data);
         const data = await response.text();
         //console.log("jaka ",data)
-        page_cache[page]=data
+        page_cache[page.page]=data
         document.querySelector(target).innerHTML = data; //cara menangkap param lalu direndder ke html ataupin js dari page
         //ambil query parameter 
     }catch (error) {
