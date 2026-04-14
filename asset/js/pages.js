@@ -49,6 +49,32 @@ nav_comp()
 				card.querySelector(".name").textContent=item.name
 				card.querySelector(".status").textContent=item.status
 				await component_fetcher({
+					component: "img",
+					target: () =>
+						card.querySelector(
+							".image-poster",
+						),
+					prop: {
+						src:item.picture,
+						alt:"none",
+						type:"data_klarifikasi",
+						class:"fit-cover size-cover h-full w-full" 
+					},
+				});
+				await component_fetcher({
+					component: "img",
+					target: () =>
+						card.querySelector(
+							".avatar",
+						),
+					prop: {
+						src:item.picture,
+						alt:"none",
+						type:"data_klarifikasi",
+						class:" fit-cover size-cover w-full h-full" 
+					},
+				});
+				await component_fetcher({
 					component: "icon",
 					target: () =>
 						card.querySelector(

@@ -2,7 +2,7 @@
     {
         "id":1,
         "name":"benjamin netanyahu",
-        "picture":"benjamin_netanyahu/image/benjamin_netanyahu.jpg",
+        "picture":"benjamin_netanyahu/documents/image/bibi.jpg",
         "jabatan":"prime minister",
         "status":"manipulated by media : cherry picking,wrong translation,misleading headline",
         "is_manipulated":true,
