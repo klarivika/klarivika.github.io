@@ -178,6 +178,11 @@ nav_comp()
 
 	// end render pages
 	//route logic start
+	const url8=window.location.hash
+		console.log("url 8 adalah ",url8)
+	if (window.location.hash === "#/") {
+		await render_home_data();
+	}
 	if (window.location.hash === route_data.home) {
 		await render_home_data();
 	}

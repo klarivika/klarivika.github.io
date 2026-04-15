@@ -10,8 +10,18 @@ const init_app=async()=>{
         await component_fetcher({component: "header", target: ".header"});
         await component_fetcher({component: "img", target: ".header-img-container",prop:{src: "img/main_media/klarivika banner2.jpeg",type:"web", alt: "header image", class: "w-full h-[23rem] md:h-[25rem] object-cover"}});
         await component_fetcher({component: "footer", target: ".footer",prop:{year: new Date().getFullYear()}});
-        await component_fetcher({component: "nav", target: ".nav"});
+        await component_fetcher({component: "nav", target: ".nav"})
+        console.log("rooutes ",)
+        const url=window.location
+        if (url.hash === ''){
+            url.hash="/"
+        }
         const handle_routes={
+          "/": {
+            page:"home",
+            title:" home",
+            description:""
+          },
           "/#home": {
             page:"home",
             title:" home",
