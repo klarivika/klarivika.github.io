@@ -5,7 +5,7 @@
 const fetcher_data=async(datas={})=>{
     try{
         //{id:1}
-        console.log("datas from pages ", datas)
+        // console.log("datas from pages ", datas)
         const response=await fetch("./asset/data_json/data.json");
         const data=await response.json();
         
@@ -36,7 +36,7 @@ const fetcher_data=async(datas={})=>{
        }
 
     }catch(err){
-            console.log("error "+err)
+            // console.log("error "+err)
             return []
     }
 
@@ -56,7 +56,7 @@ const component_fetcher = async ({component,target,prop=null}) => {
         const response = await fetch("./asset/components/"+simplyfing_data);
         let data = await response.text();
         if(prop){
-            console.log("comp fetcher ",prop)
+            // console.log("comp fetcher ",prop)
             // Replace placeholders in the fetched HTML with actual prop values
             Object.entries(prop).forEach(([key, value]) => {
                 data = data.replace(new RegExp(`{{${key}}}`, 'g'), value)
@@ -96,7 +96,7 @@ const page_fetcher = async ({page,target}) => {
             document.querySelector(target).innerHTML = page_cache[page.page];
             return 
         }
-            console.log("param page ",page)
+            // console.log("param page ",page)
         const simplyfing_data=`${page['page']}/${page['page']}.html`
         const response = await fetch("./pages/"+simplyfing_data);
         const data = await response.text();

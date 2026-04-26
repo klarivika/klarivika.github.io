@@ -77,13 +77,13 @@ const routes = ({ routes }) => {
 		}else{
 			data_params={}
 		}
-		console.log("data data param " +get_query_param_url_if_exist)
+		// console.log("data data param " +get_query_param_url_if_exist)
 		
 		// console.log("data params ",data_params)
 		const url =routes["/" +get_query_param_url_if_exist] ?? routes["/#404"];
-		console.log("url last ",url)
+		// console.log("url last ",url)
 		//kene ki
-		console.log("washi no url ",url)
+		// console.log("washi no url ",url)
 		url_load_metadata(url)
 		await page_fetcher({ page: url, target: ".outlet" });
 		//fetcher data di route tertentu saja untuk menghemat resource karena tidak semua page membutuhkan data yang sama
@@ -110,7 +110,7 @@ const routes = ({ routes }) => {
 			// console.log("dataroute ",initialUrl)
 			// console.log("url ",url.split("/")[0])
 			query_param_fetcher({routes:routes,datas: {url},get_data:({key,value,url})=>{
-				console.log("ricek ",{key,value,url})
+				// console.log("ricek ",{key,value,url})
 				data_params[key]=value
 			}})
 		}

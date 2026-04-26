@@ -160,8 +160,8 @@ nav_comp()
 	};
 	const render_evidence_data = async () => {
 		const data_evidence = await fetcher_data(datas);
-		console.log("HOME DATA =>", data_evidence);
-		console.log("HOME DATA2 =>", datas);
+		// console.log("HOME DATA =>", data_evidence);
+		// console.log("HOME DATA2 =>", datas);
 		const data_evidence_validate_less_than1=data_evidence.length < 1
 		if(data_evidence_validate_less_than1){
 			$(".not-found-data-json").classList.remove("hidden")
@@ -169,7 +169,7 @@ nav_comp()
 		if(data_evidence_validate_less_than1){
 			// alert("nice ")
 			const [key,value]=Object.entries(datas)[0]
-			console.log("radical kunai ",{key,value})
+			// console.log("radical kunai ",{key,value})
 			await component_fetcher({
 				component: "text",
 				target: ".error-identifier",
@@ -328,14 +328,14 @@ return
 	// end render pages
 	//route logic start
 	const url8=window.location.hash
-		console.log("url 8 adalah ",url8)
+		// console.log("url 8 adalah ",url8)
 	if (url8 === "#/") {
 		await render_home_data();
 	}
 	if (url8 === route_data.home) {
 		await render_home_data();
 		//id masih cache harusnya refresh id untuk pembaruan data
-		console.log("perbaikan dom ",{url8,datas})
+		// console.log("perbaikan dom ",{url8,datas})
 	}
 	if (url8 === route_data.faq) {
 		await render_faq_data();
