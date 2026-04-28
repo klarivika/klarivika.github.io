@@ -5,13 +5,13 @@
 const fetcher_data=async(datas={})=>{
     try{
         //{id:1}
-        console.log("datas from pages ", datas)
+        // console.log("datas from pages ", datas)
         // if(!datas)return
         const response=await fetch("./asset/data_json/data.json");
         const data=await response.json()
         
         const fetching_data=async (datas={})=>{
-            data=data?.map((item)=>{
+            data?.map((item)=>{
             //const manipulated_link_resource=
             item["assets"]?.forEach(item2=>{
                     item2['path']=`./asset/data_klarifikasi/${item2["path"]}`;
@@ -38,7 +38,7 @@ const fetcher_data=async(datas={})=>{
                 // console.log("testuing ",item)
                 return Object.entries(datas).some(([key,val])=> item[key] == val && item['is_publish'] === true)
             } )
-            console.log("chek up for data ",data)
+            // console.log("chek up for data ",data)
        }
 
     }catch(err){
