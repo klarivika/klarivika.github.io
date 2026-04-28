@@ -105,7 +105,7 @@ const render_home_data = async ({datas}) => {
                         ),
                     prop: {
                         icon: "shield-fill-exclamation text-xl pb-3 border-b-3 border-white",
-                        link_to: `home/${item.id}`,
+                        link_to: `evidence/${item.id}`,
                         link_name: "View Article",
                     },
                 });
