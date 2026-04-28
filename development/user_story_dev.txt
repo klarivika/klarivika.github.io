@@ -82,7 +82,7 @@ atau di render page ambil
 ==routes.js
 
 
-diakali pakai callback untuk mengambil data param di routes.js lalu lengketkan di pages
+diakali pakai callback untuk mengambil data param di routes.js lalu lengketkan/ditaruh di pages sebagai argument di pages
 
 
 const handle_routes={
@@ -104,3 +104,16 @@ const handle_routes={
 
 
         try catch error silent
+        =================catatan developer 
+        untuk md aku akan menggunakkan zero md sebagai penerjemah markdown file ke html
+        //https://zerodevx.github.io/zero-md/
+                // <zero-md src="example.md"></zero-md>
+
+                route_data di routes_data akan dijadikan object lalu dikonversi ke array dan akan di skip untuk beberapa routes guna menentukan route mana yang diperbolehkan di progam mana yang diperbolehkan untuk tampil di ui / link navigasi 
+                permited_url 
+                url nav comp pages 18 pindah ke main.js
+                siapa yang render nav-container??
+
+                pakai some dan regex agar bisa search almost identik
+                untuk iterasi element nodelist gunakkan forEach jangan map
+                teknologi translate 3 bahasa inggris indonesia dan jerman

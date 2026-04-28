@@ -5,35 +5,44 @@
 const fetcher_data=async(datas={})=>{
     try{
         //{id:1}
-        console.log("datas from pages ", datas)
-         
-       const fetching_data=async (datas={})=>{
+        // console.log("datas from pages ", datas)
+        // if(!datas)return
         const response=await fetch("./asset/data_json/data.json");
-       const data=await response.json();
-       data?.map((item)=>{
+        const data=await response.json()
+        
+        const fetching_data=async (datas={})=>{
+            data?.map((item)=>{
             //const manipulated_link_resource=
             item["assets"]?.forEach(item2=>{
                     item2['path']=`./asset/data_klarifikasi/${item2["path"]}`;
             })
-            
+            item['storybook']=`./asset/data_klarifikasi/${item['storybook']}`
         })
+        // console.log("storybook ",data)
+                
                 //if data is empty then return data without fetch
-        if(Object.keys(datas).length === 0){
+        if(Object.keys(data).length === 0){
              //tembak ke outlet 
             return data
+        }else{
+            return data
         }
-            return data.filter(item =>{
-                return Object.entries(datas).every(([key,val])=> item[key] == val)
-            } )
-       } //end of function
+    } //end of function
+   
 
        if(Object.keys(datas).length === 0){
            return await fetching_data()
            
+    }else{
+        return data.filter(item =>{
+                // console.log("testuing ",item)
+                return Object.entries(datas).some(([key,val])=> item[key] == val && item['is_publish'] === true)
+            } )
+            // console.log("chek up for data ",data)
        }
 
     }catch(err){
-            console.log("error "+err)
+            // console.log("error "+err)
             return []
     }
 
@@ -53,6 +62,7 @@ const component_fetcher = async ({component,target,prop=null}) => {
         const response = await fetch("./asset/components/"+simplyfing_data);
         let data = await response.text();
         if(prop){
+            // console.log("comp fetcher ",prop)
             // Replace placeholders in the fetched HTML with actual prop values
             Object.entries(prop).forEach(([key, value]) => {
                 data = data.replace(new RegExp(`{{${key}}}`, 'g'), value)
@@ -92,10 +102,11 @@ const page_fetcher = async ({page,target}) => {
             document.querySelector(target).innerHTML = page_cache[page.page];
             return 
         }
-            console.log("param page ",page)
+            // console.log("param page ",page)
         const simplyfing_data=`${page['page']}/${page['page']}.html`
         const response = await fetch("./pages/"+simplyfing_data);
         const data = await response.text();
+        
         //console.log("jaka ",data)
         page_cache[page.page]=data
         document.querySelector(target).innerHTML = data; //cara menangkap param lalu direndder ke html ataupin js dari page

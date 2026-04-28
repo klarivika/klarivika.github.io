@@ -3,7 +3,7 @@
  * @param {string} selector 
  * @param {function} cb 
  */
-const $= (selector,cb) =>typeof cb === 'function' ? cb(document.querySelector(selector)) : document.querySelector(selector);
+const $= (selector,cb) =>typeof cb === 'function' ? cb(selector) : document.querySelector(selector);
 /**
  * @desc manipulate the dom 
  * @param {string} selector 
