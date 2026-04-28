@@ -116,3 +116,4 @@ const handle_routes={
 
                 pakai some dan regex agar bisa search almost identik
                 untuk iterasi element nodelist gunakkan forEach jangan map
+                teknologi translate 3 bahasa inggris indonesia dan jerman

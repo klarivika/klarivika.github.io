@@ -1,7 +1,8 @@
-import { fetcher_data } from "../fetcher.js";
+import { fetcher_data ,component_fetcher} from "../fetcher.js";
 import {$} from "../util.js"
 const render_evidence_data = async ({datas}) => {
 		const data_evidence = await fetcher_data(datas);
+		// $("")
 		// console.log("HOME DATA =>", data_evidence);
 		// console.log("HOME DATA2 =>", datas);
 		const data_evidence_validate_less_than1=data_evidence.length < 1
@@ -21,16 +22,12 @@ const render_evidence_data = async ({datas}) => {
 				}
 			});
 		}
-		console.log("data evidence ",data_evidence)
-		const component_render_md=document.createElement("zero-md")
-			component_render_md.setAttribute("src","lk")
-		$(".md-docs").appendChild(component_render_md)	
-return
-		
-		for (const item of home_data) {
-			if (item?.is_publish === false) {
-				continue;
-			}
+		// console.log("data evidence ",data_evidence)
+		for (const item of data_evidence) {
+			const component_render_md=document.createElement("zero-md")
+				item.storybook="./asset/data_klarifikasi/"+item.storybook
+			component_render_md.setAttribute("src",item.storybook)
+			$(".md-docs").appendChild(component_render_md)	
 			await component_fetcher({
 				component: "card",
 				target: ".card-container",
@@ -118,36 +115,9 @@ return
 					prop: {
 						icon: "shield-fill-exclamation text-xl",
 					},
-				});
-				await component_fetcher({
-					component: "link",
-					target: () =>
-						card.querySelector(
-							".link-containers",
-						),
-					prop: {
-						icon: "shield-fill-exclamation text-xl pb-3 border-b-3 border-white",
-						link_to: `home/${item.id}`,
-						link_name: "View Article",
-					},
-				});
-				const evidence=`evidence/${item.id}`
-				await component_fetcher({
-					component: "link",
-					target: () =>
-						card.querySelector(
-							".link-containers2",
-						),
-					prop: {
-						icon: "shield-fill-exclamation text-xl pb-3 border-b-3 border-white text-white block",
-						link_to: `${evidence}`,
-						link_name: "View Article",
-					},
 				})
-				card.querySelector(".link-containers2").addEventListener("click",()=>{
-					// alert("nice")
-					window.location.hash=`${evidence}`
-				})
+				card.querySelector(".link-containers2").classList.add("hidden")
+				card.querySelector(".save-icon").classList.add("hidden")
 				
 			}
 		}
