@@ -1,5 +1,5 @@
 import { fetcher_data } from "../fetcher.js";
-
+import {$} from "../util.js"
 const render_evidence_data = async ({datas}) => {
 		const data_evidence = await fetcher_data(datas);
 		// console.log("HOME DATA =>", data_evidence);
@@ -21,6 +21,10 @@ const render_evidence_data = async ({datas}) => {
 				}
 			});
 		}
+		console.log("data evidence ",data_evidence)
+		const component_render_md=document.createElement("zero-md")
+			component_render_md.setAttribute("src","lk")
+		$(".md-docs").appendChild(component_render_md)	
 return
 		
 		for (const item of home_data) {

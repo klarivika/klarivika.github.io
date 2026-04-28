@@ -1,10 +1,12 @@
 import { fetcher_data,component_fetcher } from "../fetcher.js";
 
 const render_home_data = async ({datas}) => {
-        const home_data = await fetcher_data(datas);
-        // console.log("HOME DATA =>", home_data);
+        const is_empty_object=Object.keys(datas).length == 0?undefined:datas
+        const home_data = await fetcher_data(datas)
+        console.log("HOME DATA =>", home_data);
+        console.log("HOME DATA =>", Object.keys(datas).length == 0);
         for (const item of home_data) {
-            if (item?.is_publish === false) {
+            if (item.is_publish === false) {
                 continue;
             }
             await component_fetcher({
