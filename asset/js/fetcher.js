@@ -15,8 +15,10 @@ const fetcher_data=async(datas={})=>{
             item["assets"]?.forEach(item2=>{
                     item2['path']=`./asset/data_klarifikasi/${item2["path"]}`;
             })
-            
+            item['storybook']=`./asset/data_klarifikasi/${item['storybook']}`
         })
+        // console.log("storybook ",data)
+                
                 //if data is empty then return data without fetch
         if(Object.keys(datas).length === 0){
              //tembak ke outlet 

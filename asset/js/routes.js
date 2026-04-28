@@ -1,6 +1,7 @@
 import { page_fetcher } from "./fetcher.js";
 import { render_json_data } from "./pages.js";
 import { pointings_images_video_elements } from "./pointing.js";
+import { nav_active_updater } from "./main.js";
 let curent_hash = "";
 const url_load_metadata=(urldata)=>{
 	const meta_title=document.querySelector("title")
@@ -47,6 +48,7 @@ const routes = ({ routes }) => {
 	window.addEventListener("hashchange", async () => {
 		// console.log("HASH CHANGE TRIGGERED");
 		//cegah reload jika pathname sama
+		nav_active_updater()
 		const new_hash = "/" + window.location.hash
 		if (curent_hash == window.location.hash) return
 		curent_hash = new_hash
