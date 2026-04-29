@@ -11,34 +11,82 @@
         "assets":[
             {
                 "id":1,
-                "name":"video 1",
-                "type":"video-internal",
-                "path":"benjamin_netanyahu/video/benjamin_netanyahu.mp4"
+                "name":"analize 1",
+                "type":"video-yt",
+                "path":"https://youtu.be/jRVndki_dms"
             },
             {
                 "id":2,
-                "name":"document 1",
-                "type":"documents",
-                "path":"benjamin_netanyahu/documents/12.pdf"
+                "name":"analize 2",
+                "type":"video-yt",
+                "path":"https://youtu.be/HH8Xgmr3xrc"
             }
             ,{
                 "id":3,
-                "name":"document 1",
+                "name":"analize 3",
                 "type":"video-yt",
-                "path":"benjamin_netanyahu/documents/12.pdf",
-                "link":"https://www.youtube.com/watch?v=K9KDhsFFfGU"
+                "path":"https://youtu.be/98qdTfiaPa0"
             },
             {
                 "id":4,
-                "name":"document 1 sort by the js",
-                "type":"documents",
-                "path":"benjamin_netanyahu/documents/12.pdf"
+                "name":"analize 4",
+                "type":"video-yt",
+                "path":"https://youtu.be/cjpKdUW1a3U "
             },
             {
                 "id":5,
-                "name":"vido 21",
-                "type":"documents",
-                "path":"benjamin_netanyahu/documents/12.pdf"
+                "name":"analize 5",
+                "type":"video-yt",
+                "path":"https://youtu.be/8qdIYx1x6Gs"
+            },
+            {
+                "id":6,
+                "name":"analize 6",
+                "type":"video-yt",
+                "path":"https://youtu.be/O8NTougtvIA"
+            },
+            {
+                "id":7,
+                "name":"analize 7",
+                "type":"video-yt",
+                "path":"https://youtu.be/uSXwWfWG6mg"
+            }
+            ,{
+                "id":8,
+                "name":"analize 8",
+                "type":"video-yt",
+                "path":"benjamin_netanyahu/documents/12.pdf",
+                "link":"https://youtu.be/0Jkuhebi084"
+            },
+            {
+                "id":9,
+                "name":"analize 9",
+                "type":"video-yt",
+                "path":"https://youtu.be/_RCgxXxLD5k"
+            },
+            {
+                "id":10,
+                "name":"analize 10",
+                "type":"video-yt",
+                "path":"https://youtu.be/rBOw1hCkLcw"
+            },
+            {
+                "id":11,
+                "name":"analize 11",
+                "type":"video-yt",
+                "path":"https://youtu.be/G5a33AdFVWY"
+            },
+            {
+                "id":12,
+                "name":"analize 12",
+                "type":"video-yt",
+                "path":"https://youtu.be/NWf2yztZnxk"
+            },
+            {
+                "id":13,
+                "name":"analize 13",
+                "type":"video-yt",
+                "path":"https://youtu.be/gWb7Wf00dC8"
             }
         ],
         "links":[

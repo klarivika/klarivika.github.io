@@ -74,7 +74,7 @@ const component_fetcher = async ({component,target,prop=null}) => {
                 console.error(`Component fetcher target function returned null for component ${component}`);
                 return;
             }
-            element.innerHTML = data;
+            element.innerHTML += data;
             return;
         }
         const element = document.querySelector(target);

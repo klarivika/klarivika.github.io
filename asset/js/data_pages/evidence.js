@@ -1,5 +1,5 @@
 import { fetcher_data ,component_fetcher} from "../fetcher.js";
-import {$} from "../util.js"
+import {$,All} from "../util.js"
 const render_evidence_data = async ({datas}) => {
 		const data_evidence = await fetcher_data(datas);
 		// $("")
@@ -24,14 +24,41 @@ const render_evidence_data = async ({datas}) => {
 		}
 		// console.log("data evidence ",data_evidence)
 		for (const item of data_evidence) {
-			const component_render_md=document.createElement("zero-md")
+			const component_render_md=document.querySelector(".md-docs zero-md")
 				item.storybook="./asset/data_klarifikasi/"+item.storybook
-			component_render_md.setAttribute("src",item.storybook)
-			$(".md-docs").appendChild(component_render_md)	
+			component_render_md.setAttribute("src",item.storybook)	
 			await component_fetcher({
 				component: "card",
 				target: ".card-container",
 			});
+		// data
+		item['assets'].forEach(async(value,idx) => {
+			console.log("what is this ",value)
+			if(value.type === 'video-yt'){
+				await component_fetcher({
+							component: "youtube",
+
+							target: () =>$(".video-wrapper"),
+							prop: {
+								src:value.path.split("/").pop() 
+							},
+						});
+				await component_fetcher({
+							component: "link_out",
+
+							target: () =>{
+								const links=All(".youtube-text-wrapper")
+								return links[idx]
+							},
+							prop: {
+								icon:"link text-xl hidden md:block",
+								link_name:"source",
+								link_to:value.path,
+							},
+						});
+			}
+		});
+			// card
 			const cards =
 				document.querySelectorAll(
 					".card",
