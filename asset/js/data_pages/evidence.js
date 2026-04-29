@@ -32,8 +32,9 @@ const render_evidence_data = async ({datas}) => {
 				target: ".card-container",
 			});
 		// data
-		item['assets'].forEach(async(value,idx) => {
-			// console.log("what is this ",value)
+		const assets = item['assets'];
+		for (let idx = 0; idx < assets.length; idx++) {
+    		const value = assets[idx];
 			if(value.type === 'video-yt'){
 				await component_fetcher({
 							component: "youtube",
@@ -57,6 +58,34 @@ const render_evidence_data = async ({datas}) => {
 							},
 						});
 			}
+			// images
+			if(value.type === 'image'){
+				// console.log("nilai dari ",value)
+				value.path="./asset/data_klarifikasi/"+value.path
+				await component_fetcher({
+							component: "img",
+
+							target: () =>$(".image-wrapper-ai-analize .image-datas-ai-analize"),
+							prop: {
+								src:`${value.path}`,
+								class_parent:"border-b-3 border-l-3 border-blue-400 p-3 w-[50%]"
+							},
+						});
+				await component_fetcher({
+							component: "link_out",
+
+							target: () =>{
+								const allImageWrappers = All(".image-wrapper-ai-analize .image-text-wrapper");
+                				return allImageWrappers[allImageWrappers.length - 1];
+							},
+							prop: {
+								icon:"link text-xl hidden md:block",
+								link_name:"source",
+								link_to:value.path,
+							},
+						});
+			}
+
 			if(value.type === 'internal-video'){
 				// console.log("nilai dari ",value)
 				value.path="./asset/data_klarifikasi/"+value.path
@@ -83,7 +112,7 @@ const render_evidence_data = async ({datas}) => {
 						});
 			}
 
-		});
+		}
 		const link_data=item['links']
 		link_data.forEach(async(val)=>{
 			await component_fetcher({

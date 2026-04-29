@@ -105,6 +105,42 @@
                 "name":"manipulated information",
                 "type":"internal-video",
                 "path":"benjamin_netanyahu/video/bibi manipulated sensorav.mp4"
+            },
+            {
+                "id":16,
+                "name":"ai analize",
+                "type":"image",
+                "path":"benjamin_netanyahu/documents/image/english/chat_3_english.PNG"
+            },
+            {
+                "id":17,
+                "name":"ai analize",
+                "type":"image",
+                "path":"benjamin_netanyahu/documents/image/english/chat_kimi english.jpeg"
+            },
+            {
+                "id":18,
+                "name":"ai analize",
+                "type":"image",
+                "path":"benjamin_netanyahu/documents/image/german/chat_3_german.PNG"
+            },
+            {
+                "id":19,
+                "name":"ai analize",
+                "type":"image",
+                "path":"benjamin_netanyahu/documents/image/german/chat_kimi german.jpeg"
+            },
+            {
+                "id":20,
+                "name":"ai analize",
+                "type":"image",
+                "path":"benjamin_netanyahu/documents/image/indonesian/chat_3_indonesia.PNG"
+            },
+            {
+                "id":21,
+                "name":"ai analize",
+                "type":"image",
+                "path":"benjamin_netanyahu/documents/image/indonesian/chat_kimi indonesian.jpeg"
             }
         ],
         "links":[
