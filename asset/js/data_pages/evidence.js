@@ -24,10 +24,9 @@ const render_evidence_data = async ({datas}) => {
 		}
 		// console.log("data evidence ",data_evidence)
 		for (const item of data_evidence) {
-			const component_render_md=document.createElement("zero-md")
+			const component_render_md=document.querySelector(".md-docs zero-md")
 				item.storybook="./asset/data_klarifikasi/"+item.storybook
-			component_render_md.setAttribute("src",item.storybook)
-			$(".md-docs").appendChild(component_render_md)	
+			component_render_md.setAttribute("src",item.storybook)	
 			await component_fetcher({
 				component: "card",
 				target: ".card-container",
