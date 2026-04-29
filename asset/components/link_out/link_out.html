@@ -1,4 +1,7 @@
-<div class="flex gap-1 items-center link-container">
+<div class="inline-block">
+	<div class="flex gap-1 items-center link-container transition-all duration-400 hover:text-rose-500 relative group">
 	<i class="bi bi-{{icon}} text-blue-900"></i>
 	<a href="{{link_to}}" target="_blank">{{link_name}}</a>
+	<div class="before:content-[''] before:absolute before:h-[3px] before:w-[0] before:bg-rose-900 before:top-[1.33rem] before:left-0 group-hover:before:w-[90px] before:[width] before:ease-in-out before:duration-400"></div>
+</div>
 </div>

@@ -58,6 +58,18 @@ const render_evidence_data = async ({datas}) => {
 						});
 			}
 		});
+		const link_data=item['links']
+		link_data.forEach(async(val)=>{
+			await component_fetcher({
+				component: "link_out",
+				target: () =>$(".link-datas"),
+				prop: {
+					icon:"link text-xl",
+					link_name:val.name,
+					link_to:val.link,
+				},
+				});
+		})
 			// card
 			const cards =
 				document.querySelectorAll(
