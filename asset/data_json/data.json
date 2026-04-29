@@ -93,6 +93,18 @@
                 "name":"analize 13",
                 "type":"video-yt",
                 "path":"https://youtu.be/K9KDhsFFfGU?si=UT8w5w1FkeLMSjZ-"
+            },
+            {
+                "id":14,
+                "name":"klarification",
+                "type":"pdf",
+                "path":"https://youtu.be/K9KDhsFFfGU?si=UT8w5w1FkeLMSjZ-"
+            },
+            {
+                "id":15,
+                "name":"manipulated information",
+                "type":"internal-video",
+                "path":"benjamin_netanyahu/video/bibi manipulated sensorav.mp4"
             }
         ],
         "links":[

@@ -1,6 +1,6 @@
 import { component_fetcher, fetcher_data } from "./fetcher.js";
 import {$} from './util.js'
-import { render_home_data,render_evidence_data,render_faq_data } from "./data_pages/index.js";
+import { render_home_data,render_evidence_data,render_faq_data,render_document_view_data } from "./data_pages/index.js";
 /**
  * @desc store and render databased on url query param
  * @param {object} datas
@@ -10,6 +10,7 @@ const render_json_data = async (datas) => {
 		home: "#home",
 		faq: "#faq",
 		evidence: "#evidence",
+		document: "#document",
 	}
 
 	// end render pages
@@ -29,6 +30,10 @@ const render_json_data = async (datas) => {
 	}
 	if (url8.includes(route_data.evidence) ) {
 		await render_evidence_data({datas});
+		// console.log("datas is ",datas)
+	}
+	if (url8.includes(route_data.document) ) {
+		await render_document_view_data({datas});
 		// console.log("datas is ",datas)
 	}
 	//route logic end

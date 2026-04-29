@@ -33,7 +33,7 @@ const render_evidence_data = async ({datas}) => {
 			});
 		// data
 		item['assets'].forEach(async(value,idx) => {
-			console.log("what is this ",value)
+			// console.log("what is this ",value)
 			if(value.type === 'video-yt'){
 				await component_fetcher({
 							component: "youtube",
@@ -57,6 +57,32 @@ const render_evidence_data = async ({datas}) => {
 							},
 						});
 			}
+			if(value.type === 'internal-video'){
+				// console.log("nilai dari ",value)
+				value.path="./asset/data_klarifikasi/"+value.path
+				await component_fetcher({
+							component: "video",
+
+							target: () =>$(".video-wrapper"),
+							prop: {
+								src:`${value.path}`
+							},
+						});
+				await component_fetcher({
+							component: "link_out",
+
+							target: () =>{
+								const links=$(".video-text-wrapper")
+								return links
+							},
+							prop: {
+								icon:"link text-xl hidden md:block",
+								link_name:"source",
+								link_to:value.path,
+							},
+						});
+			}
+
 		});
 		const link_data=item['links']
 		link_data.forEach(async(val)=>{
@@ -115,16 +141,7 @@ const render_evidence_data = async ({datas}) => {
 						icon: "heart text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer",
 					},
 				});
-				await component_fetcher({
-					component: "icon",
-					target: () =>
-						card.querySelector(
-							".permata-container",
-						),
-					prop: {
-						icon: "gem text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer",
-					},
-				});
+				
 				await component_fetcher({
 					component: "icon",
 					target: () =>
@@ -160,6 +177,8 @@ const render_evidence_data = async ({datas}) => {
 				
 			}
 		}
+
+		document.dispatchEvent(new CustomEvent("renderSelesai"));
 	};
 
     export{

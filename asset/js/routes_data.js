@@ -14,6 +14,11 @@ const handle_routes = {
 			title: " frequently asked questions",
 			description: "",
 		},
+		"/#document/:id/view/:type": {
+			page: "document_view",
+			title: " document view",
+			description: "",
+		},
 		"/#evidence/:id": {
 			page: "evidence",
 			title: " evidence",

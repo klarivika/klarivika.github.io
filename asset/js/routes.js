@@ -42,7 +42,7 @@ const query_param_fetcher=({routes,datas,get_data=null})=>{
  * @param {object} t
  * @param {object} t.routes
  */
-const routes = ({ routes }) => {
+const routes = async({ routes }) => {
 	// Listen for hash changes
 	let data_params = {}; //id=> 2
 	window.addEventListener("hashchange", async () => {
