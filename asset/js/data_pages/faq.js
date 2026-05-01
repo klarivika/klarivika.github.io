@@ -9,7 +9,7 @@ const render_faq_data = async () => {
             {id:4,question:"how to detect fake news or manipulated information?", answer:"you must understand the history and context behind this information and before u spread it ask yourself what is history behind it , it is real or manipulated information and then use technology such as ai grock or chatgpt"},
             {id:5,question:"what i do when is recieve information?", answer:"you must check and re check to make sure the information is not fake ,manipulated or misleading try to understand the context behind it also history about the information that u recieve"},
         ]
-        faq_datas.forEach(async(data,idx)=>{
+        for(const [idx,data] of faq_datas.entries()){
             await component_fetcher({
                 component: "accordion",
                 target: ".faq-container",
@@ -21,9 +21,9 @@ const render_faq_data = async () => {
                     const all=document.querySelectorAll(`.faq-container .icon-container`)
                     return all[idx]
                 },
-                prop:{icon:" bi-chevron-down text-lg transition-all duration-300 group-data-[open=true]:rotate-180"},
+                prop:{icon:"chevron-down text-lg transition-all duration-300 group-data-[open=true]:rotate-180"},
             })
-        })
+        }
     };
 
     export {

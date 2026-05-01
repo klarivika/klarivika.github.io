@@ -5,7 +5,12 @@ import { nav_active_updater } from "./main.js";
 let curent_hash = "";
 const url_load_metadata=(urldata)=>{
 	const meta_title=document.querySelector("title")
+	const meta_content=document.querySelector("meta[name='description']")
 	const attr_name="meta-data"
+	if(!meta_content.hasAttribute(attr_name)){
+		meta_content.setAttribute(attr_name,meta_content.content)
+	}
+	meta_content.content.replace(/{{\w+}}/g,urldata.description)
 	if(!meta_title.hasAttribute(attr_name)){
 		meta_title.setAttribute(attr_name,document.title)
 	}

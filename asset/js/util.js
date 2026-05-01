@@ -129,7 +129,7 @@ if (container_video) {
                         video.play()
                         // duration
                         
-                            console.log("video ",video)
+                            // console.log("video ",video)
                         // Opsional: ganti icon jadi pause di sini
                         if(icon_target){
                             $(".icon-play-container").innerHTML=""
@@ -196,7 +196,7 @@ const read_docx=async({url=null,res=null})=>{
                 }
 
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 }
 
