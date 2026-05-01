@@ -4,7 +4,7 @@ const render_evidence_data = async ({datas}) => {
 		const data_evidence = await fetcher_data(datas);
 		// console.log("data evidence ",data_evidence[0].download_file_analize)
 		await component_fetcher({
-			component: "link_out",
+			component: "link_out ",
 
 			target: () =>{
 				const links=$(".link-download-container")
