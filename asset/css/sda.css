@@ -1,0 +1,18 @@
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateX(-40rem);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px);
+    }
+}
+
+footer *{
+    animation: fadeIn;
+    animation-timeline: view();
+    animation-range-start: cover 0%;
+    animation-range-end: cover 40%;
+}
+
