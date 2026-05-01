@@ -86,7 +86,9 @@ const render_evidence_data = async ({datas}) => {
 						});
 			}
 			// pdf
-			if(value.type === 'pdf'){
+			const type_allowed=['pdf','docx']
+			const icons_decided=['filetype-pdf','filetype-docx']
+			if(type_allowed.includes(value.type)){
 				// console.log("nilai dari ",value)
 				value.path="./asset/data_klarifikasi/"+value.path
 				const allIdocumentWrappers = All(".documents-wrapper-ai-analize .documents-datas-ai-analize")
@@ -98,7 +100,7 @@ const render_evidence_data = async ({datas}) => {
 									return val
 								},
 								prop: {
-									icon:"filetype-pdf text-xl hidden md:block",
+									icon:`${icons_decided[type_allowed.indexOf(value.type)]} text-xl`,
 									link_name:value.name,
 									// /#document/:doc_id/topic/:id/view/:type
 									link_to:`document/${value.id}/topic/${item.id}/view/${value.type}`,

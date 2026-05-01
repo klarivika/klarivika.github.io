@@ -1,5 +1,5 @@
 import { fetcher_data ,component_fetcher} from "../fetcher.js";
-import {$,All} from "../util.js"
+import {$,All,read_docx} from "../util.js"
 const render_document_view_data = async ({datas}) => {
 		const data_evidence = await fetcher_data(datas);
 		// $("")
@@ -25,16 +25,15 @@ const render_document_view_data = async ({datas}) => {
 		,data_type_param=datas.type
 		,data_doc_id_param=datas.doc_id
 			//kalau :doc_id tidak ditemukan
-		const validate=data_docs.filter(val=>val.id == data_doc_id_param)
-		// kalau typenya bukan pdf
-		if(data_type_param !='pdf' || validate.length<1){
+		const validate=data_docs.filter(val=>val.id == data_doc_id_param && val.type ==data_type_param)
+		const show_details_error=async()=>{
 			$(".not-found-data-json").classList.remove("hidden")
 			$(".link-documents").classList.add("hidden")
 			// validate
 			// alert("nice ")
 			let validate_param_based_condition
 			if(validate.length<1)validate_param_based_condition="doc_id"
-			if(data_type_param !='pdf')validate_param_based_condition="type"
+			if(data_type_param !='pdf' || data_type_param !='docx')validate_param_based_condition="type"
 
 			// console.log("data evidence ",{data_docs,datas,validate})
 			const [key,value]=Object.entries(datas)[Object.keys(datas).indexOf(validate_param_based_condition)]
@@ -47,10 +46,18 @@ const render_document_view_data = async ({datas}) => {
 					text_type:"span",
 				}
 			});
+		}
+		//kalau data validate tidak cocok dengan typenya maka error 
+		// kalau typenya bukan pdf
+		const allowedTypes = ['pdf', 'docx'];
+		if( !allowedTypes.includes(data_type_param) || validate.length<1){
+			show_details_error()
+			
 		}else{
 			$(".not-found-data-json").classList.add("hidden")
 			$(".link-documents").classList.remove("hidden")
 			//display data
+		if(data_type_param =='pdf'){
 			for(const val of validate){
 				// console.log("siapa ",val)
 				val.path=`./asset/data_klarifikasi/${val.path}`
@@ -61,6 +68,17 @@ const render_document_view_data = async ({datas}) => {
 						src:`${val.path}`
 					}
 				});
+			}
+
+			}else if(data_type_param == "docx"){
+				// $(".document-container-display").innerHTML="hola"
+				for(const val of validate){
+				// console.log("siapa ",val)
+				val.path=`./asset/data_klarifikasi/${val.path}`
+				read_docx({res:({res})=>{
+					// console.log("resultat ",res)
+					$(".docx-display").innerHTML=res
+				},url:val.path})
 			}
 		}
 	
@@ -80,7 +98,8 @@ const render_document_view_data = async ({datas}) => {
 		});
 		
 	};
+}
 
     export{
         render_document_view_data
-    }
+	}

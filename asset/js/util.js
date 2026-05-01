@@ -173,10 +173,37 @@ if (container_video) {
 }
 
 
+const read_docx=async({url=null,res=null})=>{
+    try {
+        if(url == null){
+            throw new Error(url+" tidak boleh kosong")
+        }
+        const resp=await fetch(url)
+        if(!resp.ok){
+            throw new Error("file not found in the server")
+        }
+        const arraybuffer=await resp.arrayBuffer()
+        const result=await mammoth.convertToHtml({
+            arrayBuffer:arraybuffer
+        })
+
+            res({res:result.value
+})
+        // $(".document-container-display").innerHTML=result.value
+
+         if (result.messages.length > 0) {
+                    // console.log("Notifikasi Mammoth:", result.messages);
+                }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export{
     $,
     All,
     register_variable_styles,
-    video_internal
+    video_internal,
+    read_docx
 }

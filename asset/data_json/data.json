@@ -178,6 +178,60 @@
                 "name":"ai analize 2 english",
                 "type":"pdf",
                 "path":"benjamin_netanyahu/documents/pdf/english/clarification_document_advanced english.pdf"
+            },
+            {
+                "id":28,
+                "name":"ai analize 1 english",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/english/clarification_document_complete english 1.docx"
+            },
+            {
+                "id":29,
+                "name":"ai analize 2 english",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/english/clarification_document_complete english.docx"
+            },
+            {
+                "id":30,
+                "name":"ai analize 3 english",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/english/clarification_document_final_v3 english.docx"
+            },
+            {
+                "id":31,
+                "name":"ai analize 1 german",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/german/clarification_document_complete (1) german.docx"
+            },
+            {
+                "id":32,
+                "name":"ai analize 2 german",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/german/clarification_document_complete 2 german.docx"
+            },
+            {
+                "id":33,
+                "name":"ai analize 3 german",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/german/clarification_document_final_v3 german.docx"
+            },
+            {
+                "id":34,
+                "name":"ai analize 1 indonesia",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/indonesian/clarification_document_complete indonesian 1.docx"
+            },
+            {
+                "id":35,
+                "name":"ai analize 2 indonesia",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/indonesian/clarification_document_complete indonesian.docx"
+            },
+            {
+                "id":36,
+                "name":"ai analize 3 indonesia",
+                "type":"docx",
+                "path":"benjamin_netanyahu/documents/pdf/indonesian/clarification_document_final_v3 indonesian.docx"
             }
         ],
         "links":[
