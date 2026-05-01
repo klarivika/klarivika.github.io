@@ -85,6 +85,27 @@ const render_evidence_data = async ({datas}) => {
 							},
 						});
 			}
+			// pdf
+			if(value.type === 'pdf'){
+				// console.log("nilai dari ",value)
+				value.path="./asset/data_klarifikasi/"+value.path
+				const allIdocumentWrappers = All(".documents-wrapper-ai-analize .documents-datas-ai-analize")
+				for(const val of allIdocumentWrappers){
+					await component_fetcher({
+								component: "link",
+	
+								target: () =>{
+									return val
+								},
+								prop: {
+									icon:"filetype-pdf text-xl hidden md:block",
+									link_name:value.name,
+									// /#document/:doc_id/topic/:id/view/:type
+									link_to:`document/${value.id}/topic/${item.id}/view/${value.type}`,
+								},
+							});
+				}
+			}
 
 			if(value.type === 'internal-video'){
 				// console.log("nilai dari ",value)
@@ -95,6 +116,19 @@ const render_evidence_data = async ({datas}) => {
 							target: () =>$(".video-wrapper"),
 							prop: {
 								src:`${value.path}`
+							},
+						});
+				await component_fetcher({
+							component: "text",
+
+							target: () =>{
+								const links=$(".video-text-wrapper")
+								return links
+							},
+							prop: {
+								text_type:"p",
+								content:`context: ${value.context_video}`,
+								class:"w-[23rem] py-3"
 							},
 						});
 				await component_fetcher({

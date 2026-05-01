@@ -97,14 +97,15 @@
             {
                 "id":14,
                 "name":"klarification",
-                "type":"pdf",
+                "type":"video-yt",
                 "path":"https://youtu.be/K9KDhsFFfGU?si=UT8w5w1FkeLMSjZ-"
             },
             {
                 "id":15,
                 "name":"manipulated information",
                 "type":"internal-video",
-                "path":"benjamin_netanyahu/video/bibi manipulated sensorav.mp4"
+                "path":"benjamin_netanyahu/video/bibi manipulated sensorav.mp4",
+                "context_video":"it was record during second intifada 2001 , and it is about benjamin netanyahu break the oslo accord it not a master plant but we can see what netanyahu policies he take moving forward"
             },
             {
                 "id":16,
@@ -141,6 +142,42 @@
                 "name":"ai analize",
                 "type":"image",
                 "path":"benjamin_netanyahu/documents/image/indonesian/chat_kimi indonesian.jpeg"
+            },
+            {
+                "id":22,
+                "name":"ai analize 1 indonesian",
+                "type":"pdf",
+                "path":"benjamin_netanyahu/documents/pdf/indonesian/clarification_document_advanced indonesian.pdf"
+            },
+            {
+                "id":23,
+                "name":"ai analize 2 indonesian",
+                "type":"pdf",
+                "path":"benjamin_netanyahu/documents/pdf/indonesian/clarification_document_advanced 1 indonesian.pdf"
+            },
+            {
+                "id":24,
+                "name":"ai analize 1 german",
+                "type":"pdf",
+                "path":"benjamin_netanyahu/documents/pdf/german/clarification_document_advanced (1)german.pdf"
+            },
+            {
+                "id":25,
+                "name":"ai analize 2 german",
+                "type":"pdf",
+                "path":"benjamin_netanyahu/documents/pdf/german/clarification_document_advanced german.pdf"
+            },
+            {
+                "id":26,
+                "name":"ai analize  1 english",
+                "type":"pdf",
+                "path":"benjamin_netanyahu/documents/pdf/english/clarification_document_advanced (1) (1).pdf english.pdf"
+            },
+            {
+                "id":27,
+                "name":"ai analize 2 english",
+                "type":"pdf",
+                "path":"benjamin_netanyahu/documents/pdf/english/clarification_document_advanced english.pdf"
             }
         ],
         "links":[
