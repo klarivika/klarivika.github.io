@@ -61,16 +61,6 @@ const render_home_data = async ({datas}) => {
                     component: "icon",
                     target: () =>
                         card.querySelector(
-                            ".permata-container",
-                        ),
-                    prop: {
-                        icon: "gem text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer",
-                    },
-                });
-                await component_fetcher({
-                    component: "icon",
-                    target: () =>
-                        card.querySelector(
                             ".text-status .icon-status",
                         ),
                     prop: {

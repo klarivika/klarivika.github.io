@@ -1,3 +1,5 @@
+// import { All } from "./util";
+
 /**
  * @desc fetch data from json and insert it to html
  * @param {object} datas 
@@ -56,10 +58,11 @@ const fetcher_data=async(datas={})=>{
  * @param {object} prop 
  * @param {string} prop.icon 
  */
-const component_fetcher = async ({component,target,prop=null}) => {
+const component_fetcher = async ({component,target,prop=null,path_to_component=null}) => {
     try {
         const simplyfing_data=`${component}/${component}.html`
-        const response = await fetch("./asset/components/"+simplyfing_data);
+        const path_to_comp=path_to_component === null?"./asset/components/"+simplyfing_data:path_to_component+simplyfing_data
+        const response = await fetch(path_to_comp);
         let data = await response.text();
         if(prop){
             // console.log("comp fetcher ",prop)

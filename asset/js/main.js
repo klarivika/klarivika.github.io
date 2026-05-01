@@ -3,7 +3,7 @@ import { routes } from "./routes.js";
 import { component_fetcher } from "./fetcher.js";
 import { themes } from "./theme.js";
 import { handle_routes } from "./routes_data.js";
-import { $,All } from "./util.js";
+import { $,All,video_internal } from "./util.js";
 
 /**
  * @desc for update state for the hashchange listener and update its link for activate
@@ -50,7 +50,6 @@ const nav_comp=async({url})=>{
 
 const init_app = async () => {
 	register_variable_styles({ themes });
-
 	await component_fetcher({ component: "header", target: ".header" });
 	await component_fetcher({
 		component: "img",
@@ -75,7 +74,11 @@ const init_app = async () => {
 	}
 	await nav_comp({url})
 	 nav_active_updater()
-	routes({ routes: handle_routes });
+	await routes({ routes: handle_routes })
+	 document.addEventListener("renderSelesai", async() => {
+        // console.log("Semua komponen sudah nempel, sekarang isi icon video!");
+         await video_internal();
+    }, { once: true })
 };
 
 export { init_app,nav_active_updater };

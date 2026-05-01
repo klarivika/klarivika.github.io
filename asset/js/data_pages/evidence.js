@@ -32,8 +32,9 @@ const render_evidence_data = async ({datas}) => {
 				target: ".card-container",
 			});
 		// data
-		item['assets'].forEach(async(value,idx) => {
-			console.log("what is this ",value)
+		const assets = item['assets'];
+		for (let idx = 0; idx < assets.length; idx++) {
+    		const value = assets[idx];
 			if(value.type === 'video-yt'){
 				await component_fetcher({
 							component: "youtube",
@@ -57,7 +58,109 @@ const render_evidence_data = async ({datas}) => {
 							},
 						});
 			}
-		});
+			// images
+			if(value.type === 'image'){
+				// console.log("nilai dari ",value)
+				value.path="./asset/data_klarifikasi/"+value.path
+				await component_fetcher({
+							component: "img",
+
+							target: () =>$(".image-wrapper-ai-analize .image-datas-ai-analize"),
+							prop: {
+								src:`${value.path}`,
+								class_parent:"border-b-3 border-l-3 border-blue-400 p-3 w-[50%]"
+							},
+						});
+				await component_fetcher({
+							component: "link_out",
+
+							target: () =>{
+								const allImageWrappers = All(".image-wrapper-ai-analize .image-text-wrapper");
+                				return allImageWrappers[allImageWrappers.length - 1];
+							},
+							prop: {
+								icon:"link text-xl hidden md:block",
+								link_name:"source",
+								link_to:value.path,
+							},
+						});
+			}
+			// pdf
+			const type_allowed=['pdf','docx']
+			const icons_decided=['filetype-pdf','filetype-docx']
+			if(type_allowed.includes(value.type)){
+				// console.log("nilai dari ",value)
+				value.path="./asset/data_klarifikasi/"+value.path
+				const allIdocumentWrappers = All(".documents-wrapper-ai-analize .documents-datas-ai-analize")
+				for(const val of allIdocumentWrappers){
+					await component_fetcher({
+								component: "link",
+	
+								target: () =>{
+									return val
+								},
+								prop: {
+									icon:`${icons_decided[type_allowed.indexOf(value.type)]} text-xl`,
+									link_name:value.name,
+									// /#document/:doc_id/topic/:id/view/:type
+									link_to:`document/${value.id}/topic/${item.id}/view/${value.type}`,
+								},
+							});
+				}
+			}
+
+			if(value.type === 'internal-video'){
+				// console.log("nilai dari ",value)
+				value.path="./asset/data_klarifikasi/"+value.path
+				await component_fetcher({
+							component: "video",
+
+							target: () =>$(".video-wrapper"),
+							prop: {
+								src:`${value.path}`
+							},
+						});
+				await component_fetcher({
+							component: "text",
+
+							target: () =>{
+								const links=$(".video-text-wrapper")
+								return links
+							},
+							prop: {
+								text_type:"p",
+								content:`context: ${value.context_video}`,
+								class:"w-[23rem] py-3"
+							},
+						});
+				await component_fetcher({
+							component: "link_out",
+
+							target: () =>{
+								const links=$(".video-text-wrapper")
+								return links
+							},
+							prop: {
+								icon:"link text-xl hidden md:block",
+								link_name:"source",
+								link_to:value.path,
+							},
+						});
+			}
+
+		}
+		const link_data=item['links']
+		link_data.forEach(async(val)=>{
+			await component_fetcher({
+				component: "link_out",
+				target: () =>$(".link-datas"),
+				prop: {
+					icon:"link text-xl",
+					link_name:val.name,
+					link_to:val.link,
+				},
+				});
+		})
 			// card
 			const cards =
 				document.querySelectorAll(
@@ -103,16 +206,7 @@ const render_evidence_data = async ({datas}) => {
 						icon: "heart text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer",
 					},
 				});
-				await component_fetcher({
-					component: "icon",
-					target: () =>
-						card.querySelector(
-							".permata-container",
-						),
-					prop: {
-						icon: "gem text-2xl text-gray-500 transition-all duration-400 hover:text-[var(--dark)] hover:cursor-pointer",
-					},
-				});
+				
 				await component_fetcher({
 					component: "icon",
 					target: () =>
@@ -148,6 +242,8 @@ const render_evidence_data = async ({datas}) => {
 				
 			}
 		}
+
+		document.dispatchEvent(new CustomEvent("renderSelesai"));
 	};
 
     export{
