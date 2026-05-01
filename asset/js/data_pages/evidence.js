@@ -2,6 +2,20 @@ import { fetcher_data ,component_fetcher} from "../fetcher.js";
 import {$,All} from "../util.js"
 const render_evidence_data = async ({datas}) => {
 		const data_evidence = await fetcher_data(datas);
+		// console.log("data evidence ",data_evidence[0].download_file_analize)
+		await component_fetcher({
+			component: "link_out",
+
+			target: () =>{
+				const links=$(".link-download-container")
+				return links
+			},
+			prop: {
+				icon:"link text-xl hidden md:block",
+				link_name:"download file analize",
+				link_to:data_evidence[0].download_file_analize,
+			},
+		});
 		// $("")
 		// console.log("HOME DATA =>", data_evidence);
 		// console.log("HOME DATA2 =>", datas);

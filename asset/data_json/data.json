@@ -8,6 +8,7 @@
         "is_publish":true,
         "is_manipulated":true,
         "storybook":"benjamin_netanyahu/md/storybook.md",
+        "download_file_analize":"https://drive.google.com/file/d/1zpgKDkTIARbyIMALnTF2ET9Bd4yQKkIG/view?usp=sharing",
         "assets":[
             {
                 "id":1,
@@ -252,11 +253,6 @@
             },
             {
                 "id":4,
-                "name":"chatgpt 1",
-                "link":"https://chatgpt.com/share/69c60687-c630-8320-ad34-bba34eef9535"
-            },
-            {
-                "id":5,
                 "name":"grok analize 3",
                 "link":"https://grok.com/c/2b5624cf-deef-4b14-a359-06d2432cfdb0?rid=62988c0f-2dc0-4a60-8bbd-af1c4ecf4fb7"
             }
