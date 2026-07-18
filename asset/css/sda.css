@@ -1,64 +1,59 @@
-  body{
-    scroll-behavior: smooth;
-  }
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-      transform: translateX(-40rem);
-    }
-    25%{
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(0px);
-    }
+body {
+	scroll-behavior: smooth;
 }
-  @keyframes fadeOut {
-    0% {
-      opacity:1;
-      transform: translateX(0);
-    }
-    25%{
-      opacity: 1;
-    }
-    100% {
-      opacity: 1;
-      transform: translateX(-40rem);
-    }
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateX(-40rem);
+	}
+	25% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+}
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	25% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(-40rem);
+	}
 }
 
-footer *,
-.link-container{
-    animation: fadeIn;
-    animation-timeline: view();
-    animation-range-start: cover 0%;
-    animation-range-end: cover 40%;
-    transition: all ease 600;
+.link-container {
+	/* Disabled scroll-linked animation to keep card content stable */
+	animation: none !important;
+	animation-timeline: none !important;
+	animation-range: none !important;
+	transition: all ease 600;
 }
 
 .faq-container *,
-.faq-title{
-    animation:
-      fadeIn linear,
-      fadeOut linear;
-    animation-timeline: view(), view();
-    animation-range: entry, exit;
+.faq-title {
+	animation:
+		fadeIn linear,
+		fadeOut linear;
+	animation-timeline: view(), view();
+	animation-range: entry, exit;
 }
 
-.card img,
-.card ,
+/* .card img, */
+/* .card , */
 .video-internal,
 .youtube,
 .image-wrapper,
-iframe
-{
-    /* animation: fadeOut; */
-    animation:
-      fadeOut linear;
-      /* fadeOut linear; */
-    animation-timeline: view(), view();
-    animation-range:  exit;
-    transition: all ease 600;
+iframe {
+	/* Disabled scroll-linked animation for stability during scroll */
+	animation: none !important;
+	animation-timeline: none !important;
+	animation-range: none !important;
+	transition: all ease 600;
 }
-
